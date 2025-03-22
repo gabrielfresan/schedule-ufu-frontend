@@ -1,0 +1,20 @@
+.menu{
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-right: 1px solid #555555;
+    text-align: center;
+    height: 100vh;
+}
+
+.item{
+    border-bottom: 1px solid #555555;
+}
+
+button{
+    background-color: transparent;
+    border: none;
+    color: #2670E8;
+    font-size: 24px;
+    cursor: pointer;
+}

@@ -1,9 +1,9 @@
-.footer{
+.footer {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 8%;
     background-color: #071D41;
     color: #fff;
-    margin-top: 10px;
+    width: 100%;  
 }

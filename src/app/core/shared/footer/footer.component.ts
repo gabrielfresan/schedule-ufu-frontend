@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
+   @Input() title: string = '2025 | Acesso UFU  | Desenvolvido pelo CTIC | Universidade Federal de Uberlândia.';
 
 }
