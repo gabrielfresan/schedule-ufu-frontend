@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './core/routes/app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './core/components/home/home.component';
+import { ConfigurationComponent } from './core/components/configuration/configuration.component';
+import { UserschdeulesComponent } from './core/components/userschdeules/userschdeules.component';
+import { RouterLink } from '@angular/router';
 
 
 @NgModule({
     declarations: [],
     imports: [
         BrowserModule,
-        AppRoutingModule,
         AppComponent,
-        HomeComponent
+        HomeComponent,
+        ConfigurationComponent,
+        UserschdeulesComponent,
+        RouterLink
+        
+        
     ],
     providers: []
 })

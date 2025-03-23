@@ -8,6 +8,7 @@
 
 .header h1{
    margin-left: 10px;
+   font-size: clamp(20px, 2vw, 45px);
 }
 
 .logo{
