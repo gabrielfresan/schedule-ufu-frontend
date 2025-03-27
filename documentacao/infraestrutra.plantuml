@@ -1,0 +1,26 @@
+@startuml
+
+actor "Usuário" as usuario
+node "Cliente (Web)" {
+  [Browser]
+}
+
+node "Servidor Web (Backend)" {
+  [Servidor de API (Spring Boot)]
+}
+
+node "Servidor de Banco de Dados" {
+  [Banco de Dados (PostgreSQL)]
+}
+
+node "SSO (UFU)" {
+  [Serviço de Autenticação SSO UFU]
+}
+
+usuario --> [Cliente (Web)] : Acesso
+[Cliente (Web)] --> [SSO (UFU)] : Redireciona para Autenticação
+[SSO (UFU)] --> [Cliente (Web)] : Retorna JWT
+[Cliente (Web)] --> [Servidor Web (Backend)] : Envia JWT para API
+[Servidor Web (Backend)] --> [Banco de Dados] : Consulta/Manipula Dados
+
+@enduml
