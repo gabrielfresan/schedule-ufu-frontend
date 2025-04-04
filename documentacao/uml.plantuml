@@ -1,0 +1,75 @@
+@startuml
+!theme cerulean
+
+entity "Campus" as Campus {
+  * id (PK)
+  --
+  nome
+  localização
+}
+
+entity "EspaçoEsportivo" as EspacoEsportivo {
+  * id (PK) [Nome do Espaço]
+  --
+  id_campus (FK)
+  disponibilidade (bool)
+  funcao
+  modalidades
+}
+
+entity "HorarioFuncionamento" as HorarioFuncionamento {
+  * id (PK)
+  --
+  id_espaco (FK)
+  dia_semana
+  horario_abertura
+  horario_fechamento
+}
+
+entity "Feriados" as Feriados {
+  * id (PK)
+  --
+  id_campus (FK)
+  data
+  descricao
+  horario_abertura
+  horario_fechamento
+}
+
+entity "Usuario" as Usuario {
+  * matricula (PK)
+  --
+  nome
+  email
+  curso
+  telefone
+  tipo_usuario
+}
+
+entity "Agendamento" as Agendamento {
+  * id (PK)
+  --
+  matricula_usuario (FK)
+  id_espaco (FK)
+  data_agendamento
+  horario_inicio
+  horario_fim
+  num_pessoas
+  telefone_contato
+  prioridade
+}
+
+entity "ConfiguracoesAgendamento" as ConfiguracoesAgendamento {
+  * id (PK)
+  --
+  tempo_maximo_agendamento
+  tempo_antecedencia_cancelamento
+  tempo_antecedencia_agendamento
+}
+
+Campus ||--o{ EspacoEsportivo : "1:N"
+EspacoEsportivo ||--o{ HorarioFuncionamento : "1:N"
+Campus ||--o{ Feriados : "1:N"
+EspacoEsportivo ||--o{ Agendamento : "1:N"
+Usuario ||--o{ Agendamento : "1:N"
+@enduml
