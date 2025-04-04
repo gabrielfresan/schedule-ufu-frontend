@@ -1,9 +1,11 @@
 <div class="flex justify-between items-center bg-white pl-4 m-0 h-20">
     <div class="flex items-center">
-        <img src="./images/image.png" alt="Logo UFU" loading="lazy">
-    <h2 class="pl-2">Centro Esportivo Universitário UFU</h2>
+        <img src="/public/image.png" alt="Logo UFU" class="max-w-full h-auto object-contain">
+        <h2 class="pl-2">Centro Esportivo Universitário UFU</h2>
     </div>
     <div class="flex items-center mr-2">
-    <span class="br-avatar small mr-3" title="`{{user}}"><span class="content {{ randomColor }} text-pure-0">{{ user.charAt(0) }}</span></span>
+        <span class="br-avatar small mr-3" title="{{ user }}">
+            <span class="{{ randomColor }} content bg-white">{{ user.charAt(0) }}</span>
+        </span>
     </div>
 </div>

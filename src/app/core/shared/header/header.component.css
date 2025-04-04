@@ -25,7 +25,6 @@
   .br-avatar .content {
     align-items: center;
     border-radius: 100%;
-    color: #F8F8F8;
     display: inline-flex;
     font-size: var(--avatar-text-size);
     height: var(--avatar-size);
