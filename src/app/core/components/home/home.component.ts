@@ -53,14 +53,17 @@ export class HomeComponent {
     },
   ];
 
+
+
+  // Select (Dropdown) configuration
   dropdownOptions = [
     { id: 'criar-reserva', value: 'criar-reserva', label: 'Criar Reserva' },
     { id: 'editar-reserva', value: 'editar-reserva', label: 'Editar Reserva' },
     { id: 'cancelar-reserva', value: 'cancelar-reserva', label: 'Cancelar Reserva' },
   ];
 
-  onDropdownChange(value: string): void {
-    console.log('Selected action:', value);
-    // Add your logic here
+
+  onDropdownChange(event: String): void {
+    console.log('Campus selecionado:', event);
   }
 }

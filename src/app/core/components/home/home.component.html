@@ -32,10 +32,10 @@
     </div>
   </div>
 </div>
-  <div class="br-table" title="Reservas">
+  <div title="Reservas">
     <div class="table-header">
       <div class="top-bar">
-        <h1 class="table-title">Reservas</h1>
+        <h3 class="table-title">Reservas</h3>
       </div>
     </div>
     <table>
@@ -53,7 +53,7 @@
           <td class="text-center" >{{ row.resposavel }}</td>
           <td class="text-center">{{ row.curso }}</td>
           <td class="text-center">
-            <button class="br-button primary" type="button" aria-label="Criar reserva" routerLink="/reservas/criar-reserva">{{ row.disponibilidade}}</button>
+            <button class="br-button primary" type="button" aria-label="Controle Reserva" routerLink="/reservas/criar-reserva">{{ row.disponibilidade}}</button>
             </td>
         </tr>
       </tbody>
