@@ -56,9 +56,59 @@ export class HomeComponent implements AfterViewInit {
       disponibilidade: 'Indisponível',
       campus: 'Santa Mônica'
     },
+    {
+      horario: '08:00 - 09:00',
+      nome: 'G2',
+      resposavel: 'Gabriel Machado',
+      curso: 'Sistemas de Informação',
+      disponibilidade: 'Indisponível',
+      campus: 'Santa Mônica'
+    },
+    {
+      horario: '08:00 - 09:00',
+      nome: 'G2',
+      resposavel: 'Gabriel Machado',
+      curso: 'Sistemas de Informação',
+      disponibilidade: 'Indisponível',
+      campus: 'Santa Mônica'
+    },
+    {
+      horario: '08:00 - 09:00',
+      nome: 'G2',
+      resposavel: 'Gabriel Machado',
+      curso: 'Sistemas de Informação',
+      disponibilidade: 'Indisponível',
+      campus: 'Santa Mônica'
+    },
+    {
+      horario: '08:00 - 09:00',
+      nome: 'G2',
+      resposavel: 'Gabriel Machado',
+      curso: 'Sistemas de Informação',
+      disponibilidade: 'Indisponível',
+      campus: 'Santa Mônica'
+    }
+    ,
+    {
+      horario: '08:00 - 09:00',
+      nome: 'G2',
+      resposavel: 'Gabriel Machado',
+      curso: 'Sistemas de Informação',
+      disponibilidade: 'Indisponível',
+      campus: 'Santa Mônica'
+    }
+    ,
+    {
+      horario: '08:00 - 09:00',
+      nome: 'G2',
+      resposavel: 'Gabriel Machado',
+      curso: 'Sistemas de Informação',
+      disponibilidade: 'Indisponível',
+      campus: 'Santa Mônica'
+    }
   ];
 
-    // Variáveis para o filtro e lista a ser mostrada
+  // Variáveis para o filtro e lista a ser mostrada
   selectedCampus: string = '';
   selectedLabel: string = "Selecione o Campus para filtrar";
   filteredReserva: Reserva[] = [];
@@ -66,7 +116,7 @@ export class HomeComponent implements AfterViewInit {
   // Configurações iniciais do Flatpickr e filtro
   ngAfterViewInit(): void {
     flatpickr('#simples-input', {});
-    this.filteredReserva = this.reserva; 
+    this.filteredReserva = this.reserva;
   }
 
   //lógica do dropdown
