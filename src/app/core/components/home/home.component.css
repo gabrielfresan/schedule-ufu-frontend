@@ -585,26 +585,3 @@
 .br-table.no-hover td:not(.column-collapse):hover td {
   background: none;
 }
-
-.tabela-horarios {
-  max-height: 70vh;
-  overflow-y: auto;
-  overflow-x: auto;
-  box-sizing: border-box;
-}
-
-.text-center {
-  height: 79px;
-}
-
-@media (max-height: 800px) {
-  .tabela-horarios {
-    max-height: 50vh;
-  }
-}
-
-@media (min-height: 1200px) {
-  .tabela-horarios {
-    max-height: 80vh;
-  }
-}

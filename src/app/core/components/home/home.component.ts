@@ -2,17 +2,15 @@ import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { Reserva } from '../../models/reservaModel';
 import { CommonModule } from '@angular/common';
 import flatpickr from 'flatpickr';
+import { TableComponent } from "../table/table.component";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  imports: [CommonModule, TableComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements AfterViewInit {
-  // Select configuration
-  @ViewChild('dropdownList') dropdownList!: ElementRef;
-  isDropdownOpen: boolean = false;
 
   // Todas as reservas da tabela
   reserva: Reserva[] = [
@@ -113,11 +111,24 @@ export class HomeComponent implements AfterViewInit {
   selectedLabel: string = "Selecione o Campus para filtrar";
   filteredReserva: Reserva[] = [];
 
+  filterTable(): void {
+    if (this.selectedCampus) {
+      this.filteredReserva = this.reserva.filter(row => row.campus == this.selectedCampus);
+    } else {
+      this.filteredReserva = this.reserva;
+    }
+  }
+
   // Configurações iniciais do Flatpickr e filtro
   ngAfterViewInit(): void {
     flatpickr('#simples-input', {});
     this.filteredReserva = this.reserva;
   }
+
+    // Select configuration
+    @ViewChild('dropdownList') dropdownList!: ElementRef;
+    isDropdownOpen: boolean = false;
+  
 
   //lógica do dropdown
   toggleDropdown(): void {
@@ -144,11 +155,4 @@ export class HomeComponent implements AfterViewInit {
     this.toggleDropdown();
   }
 
-  filterTable(): void {
-    if (this.selectedCampus) {
-      this.filteredReserva = this.reserva.filter(row => row.campus == this.selectedCampus);
-    } else {
-      this.filteredReserva = this.reserva;
-    }
-  }
 }

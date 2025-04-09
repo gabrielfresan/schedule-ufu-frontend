@@ -1,0 +1,7 @@
+.tabela-horarios {
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: auto;
+    box-sizing: border-box;
+  }
+  
