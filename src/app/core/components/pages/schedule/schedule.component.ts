@@ -1,16 +1,16 @@
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
-import { Reserva } from '../../models/reservaModel';
+import { Reserva } from '../../../models/reservaModel';
 import { CommonModule } from '@angular/common';
 import flatpickr from 'flatpickr';
-import { TableComponent } from "../table/table.component";
+import { TableComponent } from "../../table/table.component";
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-schedule',
   imports: [CommonModule, TableComponent],
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  templateUrl: './schedule.component.html',
+  styleUrls: ['./schedule.component.css']
 })
-export class HomeComponent implements AfterViewInit {
+export class ScheduleComponent implements AfterViewInit {
 
   // Todas as reservas da tabela
   reserva: Reserva[] = [
