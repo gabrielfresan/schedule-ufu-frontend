@@ -1,10 +1,10 @@
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
-import { Reserva } from '../../../models/Reserva';
+import { Reserva } from '../../models/Reserva';
 import { CommonModule } from '@angular/common';
-import { TableComponent } from "../../table/table.component";
-import { SelectFilterComponent } from "../../select-filter/select-filter.component";
-import { option } from '../../../models/Option';
-import { DatapickerComponent } from "../../datapicker/datapicker.component";
+import { TableComponent } from "../../components/table/table.component";
+import { SelectFilterComponent } from "../../components/select-filter/select-filter.component";
+import { option } from '../../models/Option';
+import { DatapickerComponent } from "../../components/datapicker/datapicker.component";
 
 @Component({
   selector: 'app-schedule',

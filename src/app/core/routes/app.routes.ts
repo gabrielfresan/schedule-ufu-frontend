@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { ScheduleComponent } from '../components/pages/schedule/schedule.component';
-import { UserschdeulesComponent } from '../components/pages/userschdeules/userschdeules.component';
-import { ConfigurationComponent } from '../components/pages/configuration/configuration.component';
+import { ScheduleComponent } from '../pages/schedule/schedule.component';
+import { UserschdeulesComponent } from '../pages/userschdeules/userschdeules.component';
+import { ConfigurationComponent } from '../pages/configuration/configuration.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/reservas', pathMatch: 'full' },
