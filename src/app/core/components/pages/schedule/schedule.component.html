@@ -2,38 +2,11 @@
   <!-- Datapicker -->
   <div class="flex justify-end gap-4">
     <div class="col-sm-6 col-md-4 col-lg-3">
-      <div class="br-datetimepicker" data-mode="single" data-type="text">
-        <div class="br-input has-icon">
-          <input id="simples-input" type="text" placeholder="exemplo: 02/02/2024" data-input="data-input" />
-          <button class="br-button circle small" type="button" aria-label="Abrir Timepicker" data-toggle="data-toggle"
-            id="simples-input-btn" tabindex="-1" aria-hidden="true">
-            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
+      <app-datapicker></app-datapicker>
     </div>
     <!-- Dropdown/Select -->
     <div class="col-sm-6 col-md-4 col-lg-3">
-      <div class="br-select">
-        <div class="br-input">
-          <input id="select-simple" type="text" [value]="selectedLabel" placeholder="Selecione o Campus para filtrar"
-            readonly />
-          <button class="br-button" type="button" aria-label="Exibir lista" (click)="toggleDropdown()" tabindex="-1"
-            data-trigger="data-trigger">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </button>
-        </div>
-        <div [ngClass]="{'hidden': !isDropdownOpen}" style="position: absolute;z-index: 1000;" tabindex="0">
-          <div class="br-item" tabindex="-1" *ngFor="let option of dropdownOptions"
-            (click)="onDropdownChange(option.value)">
-            <div class="br-radio">
-              <input [id]="option.id" type="radio" name="actions" [value]="option.value"
-                [checked]="selectedCampus === option.value" />
-              <label [for]="option.id">{{ option.label }}</label>
-            </div>
-          </div>
-        </div>
-      </div>
+      <app-select-filter [dropdownOptions]="dropdownOptions" (selectedOption)="onOptionSelected($event)"></app-select-filter>
     </div>
   </div>
   <!-- Tabela  -->

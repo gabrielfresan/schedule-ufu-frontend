@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Reserva } from '../../models/reservaModel';
+import { Reserva } from '../../models/Reserva';
 import { CommonModule } from '@angular/common';
 
 @Component({

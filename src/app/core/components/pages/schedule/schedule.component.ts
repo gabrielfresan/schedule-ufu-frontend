@@ -1,12 +1,14 @@
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
-import { Reserva } from '../../../models/reservaModel';
+import { Reserva } from '../../../models/Reserva';
 import { CommonModule } from '@angular/common';
-import flatpickr from 'flatpickr';
 import { TableComponent } from "../../table/table.component";
+import { SelectFilterComponent } from "../../select-filter/select-filter.component";
+import { option } from '../../../models/Option';
+import { DatapickerComponent } from "../../datapicker/datapicker.component";
 
 @Component({
   selector: 'app-schedule',
-  imports: [CommonModule, TableComponent],
+  imports: [CommonModule, TableComponent, SelectFilterComponent, DatapickerComponent],
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.css']
 })
@@ -119,40 +121,25 @@ export class ScheduleComponent implements AfterViewInit {
     }
   }
 
+
   // Configurações iniciais do Flatpickr e filtro
+  @ViewChild(DatapickerComponent) datapickerComponent!: DatapickerComponent;
   ngAfterViewInit(): void {
-    flatpickr('#simples-input', {});
     this.filteredReserva = this.reserva;
   }
 
-    // Select configuration
-    @ViewChild('dropdownList') dropdownList!: ElementRef;
-    isDropdownOpen: boolean = false;
-  
-
-  //lógica do dropdown
-  toggleDropdown(): void {
-    this.isDropdownOpen = !this.isDropdownOpen;
-    if (this.isDropdownOpen) {
-      this.dropdownList.nativeElement.style.display = 'absolute';
-    } else {
-      this.dropdownList.nativeElement.style.display = 'none';
-    }
-  }
-
-  // Select (Dropdown) configuration
-  dropdownOptions = [
+  // Select Options(Dropdown)
+  dropdownOptions : Array<option> = [
+    { id: 'todos', value: '', label: 'Todos'},
     { id: 'santa-monica', value: 'Santa Mônica', label: 'Santa Mônica' },
     { id: 'faefi', value: 'FAEFI', label: 'FAEFI' },
-    { id: 'todos', value: '', label: 'Todos', default: true },
   ];
 
   //Exibição da lista
-  onDropdownChange(selectedValue: string): void {
-    this.selectedCampus = selectedValue;
-    this.selectedLabel = selectedValue;
+  onOptionSelected(option : option) {
+    this.selectedCampus = option.value;
+    this.selectedLabel = option.label;
     this.filterTable();
-    this.toggleDropdown();
   }
-
+  
 }
