@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 import { Reserva } from '../../models/Reserva';
 import { CommonModule } from '@angular/common';
 import { TableComponent } from "../../components/table/table.component";
@@ -7,6 +7,7 @@ import { option } from '../../models/Option';
 import { DatapickerComponent } from "../../components/datapicker/datapicker.component";
 import { ScheduleFormComponent } from '../../components/schedule-form/schedule-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ScheduleTimeService } from '../../services/schedule-time.service';
 
 @Component({
   selector: 'app-schedule',
@@ -15,6 +16,15 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./schedule.component.css']
 })
 export class ScheduleComponent implements AfterViewInit {
+
+  @ViewChild('modalForm', { static: false }) modalForm!: ElementRef;
+  @ViewChild('modalOverlay', { static: false }) modalOverlay!: ElementRef;
+
+  constructor(private renderer: Renderer2, private scheduleTimeService: ScheduleTimeService) {
+    this.scheduleTimeService.horarioDisponivelClicadoEmitter.subscribe(() => {
+      this.abrirModalScheduleForm();
+    });
+  }
 
   // Todas as reservas da tabela
   reserva: Reserva[] = [
@@ -142,6 +152,16 @@ export class ScheduleComponent implements AfterViewInit {
     this.selectedCampus = option.value;
     this.selectedLabel = option.label;
     this.filterTable();
+  }
+
+  abrirModalScheduleForm(): void {
+    this.renderer.setStyle(this.modalForm.nativeElement, 'display', 'block');
+    this.renderer.setStyle(this.modalOverlay.nativeElement, 'display', 'block');
+  }
+
+  fecharModalScheduleForm(): void {
+    this.renderer.setStyle(this.modalForm.nativeElement, 'display', 'none');
+    this.renderer.setStyle(this.modalOverlay.nativeElement, 'display', 'none');
   }
 
 }

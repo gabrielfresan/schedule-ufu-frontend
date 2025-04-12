@@ -49,8 +49,7 @@
                 <div class="br-input"
                     [class.invalid]="scheduleForm.get('responsavel')?.invalid && scheduleForm.get('responsavel')?.touched">
                     <label for="responsavel">Responsável</label>
-                    <input id="responsavel" type="text" formControlName="responsavel"
-                        placeholder="Davi Tobias Lacerda" />
+                    <input id="responsavel" type="text" formControlName="responsavel" placeholder="Fulano da Silva" />
                     <div *ngIf="scheduleForm.get('responsavel')?.invalid && scheduleForm.get('responsavel')?.touched"
                         class="feedback danger">
                         {{ getErrorMessage('responsavel') }}
