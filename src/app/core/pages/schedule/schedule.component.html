@@ -6,10 +6,12 @@
     </div>
     <!-- Dropdown/Select -->
     <div class="col-sm-6 col-md-4 col-lg-3">
-      <app-select-filter [dropdownOptions]="dropdownOptions" (selectedOption)="onOptionSelected($event)"></app-select-filter>
+      <app-select-filter [dropdownOptions]="dropdownOptions"
+        (selectedOption)="onOptionSelected($event)"></app-select-filter>
     </div>
   </div>
   <!-- Tabela  -->
-  <app-table [tableName]="'Reservas'" [tableData]="filteredReserva"></app-table>
+  <app-table [tableName]="'Reservas'" [tableData]="filteredReserva" *ngIf="false"></app-table>
+  <app-schedule-form></app-schedule-form>
   <script src="node_modules/@govbr-ds/core/dist/core.min.js"></script>
 </div>

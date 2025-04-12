@@ -5,10 +5,12 @@ import { TableComponent } from "../../components/table/table.component";
 import { SelectFilterComponent } from "../../components/select-filter/select-filter.component";
 import { option } from '../../models/Option';
 import { DatapickerComponent } from "../../components/datapicker/datapicker.component";
+import { ScheduleFormComponent } from '../../components/schedule-form/schedule-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-schedule',
-  imports: [CommonModule, TableComponent, SelectFilterComponent, DatapickerComponent],
+  imports: [CommonModule, TableComponent, SelectFilterComponent, DatapickerComponent, ScheduleFormComponent, ReactiveFormsModule],
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.css']
 })
@@ -129,17 +131,17 @@ export class ScheduleComponent implements AfterViewInit {
   }
 
   // Select Options(Dropdown)
-  dropdownOptions : Array<option> = [
-    { id: 'todos', value: '', label: 'Todos'},
+  dropdownOptions: Array<option> = [
+    { id: 'todos', value: '', label: 'Todos' },
     { id: 'santa-monica', value: 'Santa Mônica', label: 'Santa Mônica' },
     { id: 'faefi', value: 'FAEFI', label: 'FAEFI' },
   ];
 
   //Exibição da lista
-  onOptionSelected(option : option) {
+  onOptionSelected(option: option) {
     this.selectedCampus = option.value;
     this.selectedLabel = option.label;
     this.filterTable();
   }
-  
+
 }

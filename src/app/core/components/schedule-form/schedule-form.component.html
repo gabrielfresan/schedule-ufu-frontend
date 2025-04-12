@@ -1,0 +1,131 @@
+<div class="container mt-4">
+    <h2>Reserva de horário</h2>
+    <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit()" novalidate>
+        <!-- Linha 1: Campus e Ginásio -->
+        <div class="row">
+            <div class="col-sm-6 mb-3">
+                <div class="br-input"
+                    [class.invalid]="scheduleForm.get('campus')?.invalid && scheduleForm.get('campus')?.touched">
+                    <label for="campus">Campus</label>
+                    <input id="campus" type="text" formControlName="campus" placeholder="Santa Mônica" />
+                    <div *ngIf="scheduleForm.get('campus')?.invalid && scheduleForm.get('campus')?.touched"
+                        class="feedback danger">
+                        {{ getErrorMessage('campus') }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 mb-3">
+                <div class="br-input"
+                    [class.invalid]="scheduleForm.get('ginasio')?.invalid && scheduleForm.get('ginasio')?.touched">
+                    <label for="ginasio">Ginásio</label>
+                    <input id="ginasio" type="text" formControlName="ginasio" placeholder="Campo Society" />
+                    <div *ngIf="scheduleForm.get('ginasio')?.invalid && scheduleForm.get('ginasio')?.touched"
+                        class="feedback danger">
+                        {{ getErrorMessage('ginasio') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Linha 2: Horário -->
+        <div class="row">
+            <div class="col-sm-12 mb-3">
+                <div class="br-input"
+                    [class.invalid]="scheduleForm.get('horario')?.invalid && scheduleForm.get('horario')?.touched">
+                    <label for="horario">Horário</label>
+                    <input id="horario" type="text" formControlName="horario"
+                        placeholder="30/08/2025 - 19:00 às 20:00" />
+                    <div *ngIf="scheduleForm.get('horario')?.invalid && scheduleForm.get('horario')?.touched"
+                        class="feedback danger">
+                        {{ getErrorMessage('horario') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Linha 3: Responsável -->
+        <div class="row">
+            <div class="col-sm-12 mb-3">
+                <div class="br-input"
+                    [class.invalid]="scheduleForm.get('responsavel')?.invalid && scheduleForm.get('responsavel')?.touched">
+                    <label for="responsavel">Responsável</label>
+                    <input id="responsavel" type="text" formControlName="responsavel"
+                        placeholder="Davi Tobias Lacerda" />
+                    <div *ngIf="scheduleForm.get('responsavel')?.invalid && scheduleForm.get('responsavel')?.touched"
+                        class="feedback danger">
+                        {{ getErrorMessage('responsavel') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Linha 4: Curso e Matrícula -->
+        <div class="row">
+            <div class="col-sm-6 mb-3">
+                <div class="br-input"
+                    [class.invalid]="scheduleForm.get('curso')?.invalid && scheduleForm.get('curso')?.touched">
+                    <label for="curso">Curso</label>
+                    <input id="curso" type="text" formControlName="curso" placeholder="Ciência da Computação" />
+                    <div *ngIf="scheduleForm.get('curso')?.invalid && scheduleForm.get('curso')?.touched"
+                        class="feedback danger">
+                        {{ getErrorMessage('curso') }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 mb-3">
+                <div class="br-input"
+                    [class.invalid]="scheduleForm.get('matricula')?.invalid && scheduleForm.get('matricula')?.touched">
+                    <label for="matricula">Matrícula</label>
+                    <input id="matricula" type="text" formControlName="matricula" placeholder="11111BCC111" />
+                    <div *ngIf="scheduleForm.get('matricula')?.invalid && scheduleForm.get('matricula')?.touched"
+                        class="feedback danger">
+                        {{ getErrorMessage('matricula') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Linha 5: Telefone -->
+        <div class="row">
+            <div class="col-sm-12 mb-3">
+                <div class="br-input"
+                    [class.invalid]="scheduleForm.get('telefone')?.invalid && scheduleForm.get('telefone')?.touched">
+                    <label for="telefone">Telefone</label>
+                    <input id="telefone" type="text" formControlName="telefone" placeholder="(34) 99999-9999" />
+                    <div *ngIf="scheduleForm.get('telefone')?.invalid && scheduleForm.get('telefone')?.touched"
+                        class="feedback danger">
+                        {{ getErrorMessage('telefone') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Linha 6: Quantidade de Pessoas -->
+        <div class="row">
+            <div class="col-sm-12 mb-3">
+                <div class="br-input"
+                    [class.invalid]="scheduleForm.get('quantidade')?.invalid && scheduleForm.get('quantidade')?.touched">
+                    <label for="quantidade">Quantidade de Pessoas (Obrigatório)</label>
+                    <input id="quantidade" type="number" formControlName="quantidade" placeholder="Ex.: 11" />
+                    <div *ngIf="scheduleForm.get('quantidade')?.invalid && scheduleForm.get('quantidade')?.touched"
+                        class="feedback danger">
+                        {{ getErrorMessage('quantidade') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botões -->
+        <div class="row mt-4">
+            <div class="col-sm-12 d-flex justify-content-between gap-3">
+                <button type="button" class="br-button danger" style="background-color: red; color: white;">Cancelar
+                    reserva</button>
+                <div>
+                    <button type="button" class="br-button secondary">Cancelar</button>
+                    <button type="submit" class="br-button primary" [disabled]="scheduleForm.invalid">Reservar
+                        horário</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
