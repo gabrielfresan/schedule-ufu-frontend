@@ -34,10 +34,10 @@ export class DropdownnComponent {
       
         //Exibição da lista
         onDropdownChange(selectedValue: string): void {
-          var selected = this.dropdownOptions.find(option => option.value === selectedValue) || this.dropdownOptions[0];
+          let selected: option = this.dropdownOptions.find(option => option.value === selectedValue) ||  { id: '', value: '', label: '' };
           this.selectedLabel = selected.label;
           this.selectedCampus = selected.value;
-          this.selectedOption.emit(selected); // Emit the selected option
+          this.selectedOption.emit(selected);
           this.toggleDropdown();
         }
 

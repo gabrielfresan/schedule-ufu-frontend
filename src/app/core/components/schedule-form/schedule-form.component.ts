@@ -12,8 +12,6 @@ import { option } from '../../models/Option';
 })
 export class ScheduleFormComponent implements OnInit {
     scheduleForm!: FormGroup;
-    Campus: option | undefined;
-    Ginasio: option | undefined;
 
     constructor(private fb: FormBuilder) { }
 
@@ -69,12 +67,10 @@ export class ScheduleFormComponent implements OnInit {
     }
 
     onCampusSelected(selected: option): void {
-        this.Campus = selected;
         this.scheduleForm.get('campus')?.setValue(selected.value);
     }
 
     onGinasioSelected(selected: option): void {
-        this.Ginasio = selected;
         this.scheduleForm.get('ginasio')?.setValue(selected.value);
     }
 
