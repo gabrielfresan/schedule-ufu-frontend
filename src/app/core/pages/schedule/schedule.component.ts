@@ -17,6 +17,8 @@ import { ScheduleTimeService } from '../../services/schedule-time.service';
 })
 export class ScheduleComponent implements AfterViewInit {
 
+  isModalOpen: boolean = false;
+
   @ViewChild('modalForm', { static: false }) modalForm!: ElementRef;
   @ViewChild('modalOverlay', { static: false }) modalOverlay!: ElementRef;
 
@@ -155,11 +157,19 @@ export class ScheduleComponent implements AfterViewInit {
   }
 
   abrirModalScheduleForm(): void {
-    this.renderer.setStyle(this.modalForm.nativeElement, 'display', 'block');
-    this.renderer.setStyle(this.modalOverlay.nativeElement, 'display', 'block');
+    this.isModalOpen = true;
+
+    if (this.modalForm?.nativeElement) {
+      this.renderer.setStyle(this.modalForm.nativeElement, 'display', 'block');
+    }
+
+    if (this.modalOverlay?.nativeElement) {
+      this.renderer.setStyle(this.modalOverlay.nativeElement, 'display', 'block');
+    }
   }
 
   fecharModalScheduleForm(): void {
+    this.isModalOpen = false;
     this.renderer.setStyle(this.modalForm.nativeElement, 'display', 'none');
     this.renderer.setStyle(this.modalOverlay.nativeElement, 'display', 'none');
   }

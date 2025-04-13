@@ -306,8 +306,9 @@
 }
 
 .formulario-agendamento {
+  width: 66%;
   position: fixed;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;

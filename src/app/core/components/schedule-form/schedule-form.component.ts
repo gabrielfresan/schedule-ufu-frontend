@@ -30,6 +30,12 @@ export class ScheduleFormComponent implements OnInit {
             ],
             quantidade: ['', [Validators.required, Validators.min(1)]],
         });
+
+        Object.keys(this.scheduleForm.controls).forEach(controlName => {
+            const control = this.scheduleForm.get(controlName);
+            control?.markAsPristine();
+            control?.markAsUntouched();
+        });
     }
 
     onSubmit(): void {

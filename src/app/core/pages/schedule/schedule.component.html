@@ -15,8 +15,8 @@
   <script src="node_modules/@govbr-ds/core/dist/core.min.js"></script>
 </div>
 
-<div class="modal-overlay" #modalOverlay style="display: none;"></div>
-<div class="formulario-agendamento" #modalForm style="display: none;">
+<div class="modal-overlay" *ngIf="isModalOpen"></div>
+<div class="formulario-agendamento" *ngIf="isModalOpen">
   <button class="close-modal" (click)="fecharModalScheduleForm()">X</button>
   <app-schedule-form></app-schedule-form>
 </div>
