@@ -152,9 +152,9 @@
 }
 
 .ufu-image {
-  content: url("../../../../../assets/logo.svg");
+  content: url("../../../../../assets/image-logo.png");
   background-size: cover;
-  max-width: 112px;
+  max-width: 5%;
 }
 
 /*# sourceMappingURL=avatar.css.map*/

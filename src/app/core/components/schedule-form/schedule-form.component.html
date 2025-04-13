@@ -4,67 +4,12 @@
         <!-- Linha 1: Campus e Ginásio -->
         <div class="row">
             <div class="col-sm-6 mb-3">
-                <div class="br-select">
-                    <div class="br-input"
-                        [class.invalid]="scheduleForm.get('campus')?.invalid && scheduleForm.get('campus')?.touched">
-                        <label for="select-campus">Campus (Obrigatório)</label>
-                        <input id="select-campus" type="text" placeholder="Selecione o campus"
-                            formControlName="campus" />
-                        <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1"
-                            data-trigger="data-trigger">
-                            <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                    <div class="br-list" tabindex="0">
-                        <div class="br-item" tabindex="-1">
-                            <div class="br-radio">
-                                <input id="campus-santa-monica" type="radio" name="campus" value="Santa Mônica" />
-                                <label for="campus-santa-monica">Santa Mônica</label>
-                            </div>
-                        </div>
-                        <div class="br-item" tabindex="-1">
-                            <div class="br-radio">
-                                <input id="campus-faefi" type="radio" name="campus" value="FAEFI" />
-                                <label for="campus-faefi">FAEFI</label>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="feedback warning" role="alert">
-                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Selecione um campus.
-                    </span>
-                </div>
+                <app-dropdownn field="Campus (Obrigatório)" [dropdownOptions]="CampusOptions" 
+                    (selectedOption)="onCampusSelected($event)"></app-dropdownn>
             </div>
             <div class="col-sm-6 mb-3">
-                <div class="br-select">
-                    <div class="br-input"
-                        [class.invalid]="scheduleForm.get('ginasio')?.invalid && scheduleForm.get('ginasio')?.touched">
-                        <label for="select-ginasio">Ginásio (Obrigatório)</label>
-                        <input id="select-ginasio" type="text" placeholder="Selecione o ginásio"
-                            formControlName="ginasio" />
-                        <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1"
-                            data-trigger="data-trigger">
-                            <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                    <div class="br-list" tabindex="0">
-                        <div class="br-item" tabindex="-1">
-                            <div class="br-radio">
-                                <input id="ginasio-campo-society" type="radio" name="ginasio" value="Campo Society" />
-                                <label for="ginasio-campo-society">Campo Society</label>
-                            </div>
-                        </div>
-                        <div class="br-item" tabindex="-1">
-                            <div class="br-radio">
-                                <input id="ginasio-quadra-poliesportiva" type="radio" name="ginasio"
-                                    value="Quadra Poliesportiva" />
-                                <label for="ginasio-quadra-poliesportiva">Quadra Poliesportiva</label>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="feedback warning" role="alert">
-                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Selecione um ginásio.
-                    </span>
-                </div>
+                <app-dropdownn field="Ginásio (Obrigatório)" [dropdownOptions]="GinasioOptions" 
+                    (selectedOption)="onGinasioSelected($event)"></app-dropdownn>
             </div>
         </div>
 

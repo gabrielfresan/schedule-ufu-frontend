@@ -1,15 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { DropdownnComponent } from "../dropdownn/dropdownn.component";
+import { option } from '../../models/Option';
 
 @Component({
     selector: 'app-schedule-form',
     templateUrl: './schedule-form.component.html',
     styleUrls: ['./schedule-form.component.css'],
-    imports: [CommonModule, ReactiveFormsModule]
+    imports: [CommonModule, ReactiveFormsModule, DropdownnComponent]
 })
 export class ScheduleFormComponent implements OnInit {
     scheduleForm!: FormGroup;
+    Campus: option | undefined;
+    Ginasio: option | undefined;
 
     constructor(private fb: FormBuilder) { }
 
@@ -63,4 +67,25 @@ export class ScheduleFormComponent implements OnInit {
         }
         return '';
     }
+
+    onCampusSelected(selected: option): void {
+        this.Campus = selected;
+        this.scheduleForm.get('campus')?.setValue(selected.value);
+    }
+
+    onGinasioSelected(selected: option): void {
+        this.Ginasio = selected;
+        this.scheduleForm.get('ginasio')?.setValue(selected.value);
+    }
+
+    //dropdown options
+    CampusOptions: Array<option> = [
+        { id: 'santa-monica', value: 'Santa Mônica', label: 'Santa Mônica' },
+        { id: 'faefi', value: 'FAEFI', label: 'FAEFI' },
+    ];
+
+    GinasioOptions: Array<option> = [
+        { id: 'g1', value: 'G1', label: 'G1' },
+        { id: 'g2', value: 'G2', label: 'G2' },
+    ];
 }
