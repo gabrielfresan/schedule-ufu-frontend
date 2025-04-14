@@ -1,0 +1,173 @@
+<div class="container mt-4">
+    <h2>Reserva de horário</h2>
+    <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit()" novalidate>
+        <!-- Linha 1: Campus e Ginásio -->
+        <div class="row">
+            <div class="col-sm-6 mb-3">
+                <div class="br-select">
+                    <div class="br-input"
+                        [class.invalid]="scheduleForm.get('campus')?.invalid && scheduleForm.get('campus')?.touched">
+                        <label for="select-campus">Campus (Obrigatório)</label>
+                        <input id="select-campus" type="text" placeholder="Selecione o campus"
+                            formControlName="campus" />
+                        <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1"
+                            data-trigger="data-trigger">
+                            <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="br-list" tabindex="0">
+                        <div class="br-item" tabindex="-1">
+                            <div class="br-radio">
+                                <input id="campus-santa-monica" type="radio" name="campus" value="Santa Mônica" />
+                                <label for="campus-santa-monica">Santa Mônica</label>
+                            </div>
+                        </div>
+                        <div class="br-item" tabindex="-1">
+                            <div class="br-radio">
+                                <input id="campus-faefi" type="radio" name="campus" value="FAEFI" />
+                                <label for="campus-faefi">FAEFI</label>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="feedback warning" role="alert">
+                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Selecione um campus.
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-6 mb-3">
+                <div class="br-select">
+                    <div class="br-input"
+                        [class.invalid]="scheduleForm.get('ginasio')?.invalid && scheduleForm.get('ginasio')?.touched">
+                        <label for="select-ginasio">Ginásio (Obrigatório)</label>
+                        <input id="select-ginasio" type="text" placeholder="Selecione o ginásio"
+                            formControlName="ginasio" />
+                        <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1"
+                            data-trigger="data-trigger">
+                            <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="br-list" tabindex="0">
+                        <div class="br-item" tabindex="-1">
+                            <div class="br-radio">
+                                <input id="ginasio-campo-society" type="radio" name="ginasio" value="Campo Society" />
+                                <label for="ginasio-campo-society">Campo Society</label>
+                            </div>
+                        </div>
+                        <div class="br-item" tabindex="-1">
+                            <div class="br-radio">
+                                <input id="ginasio-quadra-poliesportiva" type="radio" name="ginasio"
+                                    value="Quadra Poliesportiva" />
+                                <label for="ginasio-quadra-poliesportiva">Quadra Poliesportiva</label>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="feedback warning" role="alert">
+                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Selecione um ginásio.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Linha 2: Horário -->
+        <div class="row">
+            <div class="col-sm-12 mb-3">
+                <div class="br-datetimepicker" data-mode="range" data-type="text">
+                    <div class="br-input has-icon"
+                        [class.invalid]="scheduleForm.get('horario')?.invalid && scheduleForm.get('horario')?.touched">
+                        <label for="select-horario">Horário</label>
+                        <input id="select-horario" type="text" placeholder="Selecione o horário"
+                            formControlName="horario" data-input="data-input" />
+                        <button class="br-button circle small" type="button" aria-label="Abrir Timepicker"
+                            data-toggle="data-toggle" id="select-horario-btn" tabindex="-1" aria-hidden="true">
+                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div *ngIf="scheduleForm.get('horario')?.invalid && scheduleForm.get('horario')?.touched"
+                        class="feedback danger">
+                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Selecione um horário válido.
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <input type="checkbox" id="horarioRepetido" />
+                    <label for="horarioRepetido">Horário Semanal Recorrente</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Linha 3: Responsável -->
+        <div class="row">
+            <div class="col-sm-12 mb-3">
+                <div class="br-input large input-button"
+                    [class.invalid]="scheduleForm.get('responsavel')?.invalid && scheduleForm.get('responsavel')?.touched">
+                    <label for="input-search-responsavel">Responsável (Obrigatório)</label>
+                    <input id="input-search-responsavel" type="search" placeholder="Digite o nome do responsável"
+                        formControlName="responsavel" />
+                    <button class="br-button" type="button" aria-label="Buscar">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div *ngIf="scheduleForm.get('responsavel')?.invalid && scheduleForm.get('responsavel')?.touched"
+                    class="feedback danger">
+                    {{ getErrorMessage('responsavel') }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Linha 4: Curso e Matrícula -->
+        <div class="row">
+            <div class="col-sm-6 mb-3">
+                <div class="br-input">
+                    <label for="curso">Curso</label>
+                    <input id="curso" type="text" formControlName="curso"
+                        placeholder="Preenchido automaticamente ao selecionar o responsável" />
+                </div>
+            </div>
+            <div class="col-sm-6 mb-3">
+                <div class="br-input">
+                    <label for="matricula">Matrícula</label>
+                    <input id="matricula" type="text" formControlName="matricula"
+                        placeholder="Preenchido automaticamente ao selecionar o responsável" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Linha 5: Telefone -->
+        <div class="row">
+            <div class="col-sm-12 mb-3">
+                <div class="br-input">
+                    <label for="telefone">Telefone</label>
+                    <input id="telefone" type="text" formControlName="telefone"
+                        placeholder="Preenchido automaticamente ao selecionar o responsável" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Linha 6: Quantidade de Pessoas -->
+        <div class="row">
+            <div class="col-sm-12 mb-3">
+                <div class="br-input"
+                    [class.invalid]="scheduleForm.get('quantidade')?.invalid && scheduleForm.get('quantidade')?.touched">
+                    <label for="quantidade">Quantidade de Pessoas (Obrigatório)</label>
+                    <input id="quantidade" type="number" formControlName="quantidade" placeholder="Ex.: 11" />
+                    <div *ngIf="scheduleForm.get('quantidade')?.invalid && scheduleForm.get('quantidade')?.touched"
+                        class="feedback danger">
+                        {{ getErrorMessage('quantidade') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botões -->
+        <div class="row mt-4">
+            <div class="col-sm-12 d-flex justify-content-between gap-3">
+                <button type="button" class="br-button danger" style="background-color: red; color: white;">Cancelar
+                    reserva</button>
+                <div>
+                    <button type="button" class="br-button secondary">Cancelar</button>
+                    <button type="submit" class="br-button primary" [disabled]="scheduleForm.invalid">Reservar
+                        horário</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

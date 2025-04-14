@@ -1,0 +1,22 @@
+<div class="flex flex-col justify-around">
+  <!-- Datapicker -->
+  <div class="flex justify-end gap-4">
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <app-datapicker></app-datapicker>
+    </div>
+    <!-- Dropdown/Select -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <app-select-filter [dropdownOptions]="dropdownOptions"
+        (selectedOption)="onOptionSelected($event)"></app-select-filter>
+    </div>
+  </div>
+  <!-- Tabela  -->
+  <app-table [tableName]="'Reservas'" [tableData]="filteredReserva"></app-table>
+  <script src="node_modules/@govbr-ds/core/dist/core.min.js"></script>
+</div>
+
+<div class="modal-overlay" *ngIf="isModalOpen"></div>
+<div class="formulario-agendamento" *ngIf="isModalOpen">
+  <button class="close-modal" (click)="fecharModalScheduleForm()">X</button>
+  <app-schedule-form></app-schedule-form>
+</div>

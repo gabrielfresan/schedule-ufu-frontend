@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './core/components/home/home.component';
-import { ConfigurationComponent } from './core/components/configuration/configuration.component';
-import { UserschdeulesComponent } from './core/components/userschdeules/userschdeules.component';
+import { ScheduleComponent } from './core/pages/schedule/schedule.component';
+import { ConfigurationComponent } from './core/pages/configuration/configuration.component';
+import { UserschdeulesComponent } from './core/pages/userschdeules/userschdeules.component';
 import { RouterLink } from '@angular/router';
+import { provideNgxMask } from 'ngx-mask';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -12,13 +15,14 @@ import { RouterLink } from '@angular/router';
     imports: [
         BrowserModule,
         AppComponent,
-        HomeComponent,
+        ScheduleComponent,
         ConfigurationComponent,
         UserschdeulesComponent,
-        RouterLink
-        
-        
+        RouterLink,
+        ReactiveFormsModule,
     ],
-    providers: []
+    providers: [
+        provideNgxMask()
+    ],
 })
-export class AppModule {}
+export class AppModule { }
