@@ -4,11 +4,11 @@
         <!-- Linha 1: Campus e Ginásio -->
         <div class="row">
             <div class="col-sm-6 mb-3">
-                <app-dropdownn field="Campus (Obrigatório)" [dropdownOptions]="CampusOptions" 
+                <app-dropdownn field="Campus (Obrigatório)" [dropdownOptions]="CampusOptions"
                     (selectedOption)="onCampusSelected($event)"></app-dropdownn>
             </div>
             <div class="col-sm-6 mb-3">
-                <app-dropdownn field="Ginásio (Obrigatório)" [dropdownOptions]="GinasioOptions" 
+                <app-dropdownn field="Ginásio (Obrigatório)" [dropdownOptions]="GinasioOptions"
                     (selectedOption)="onGinasioSelected($event)"></app-dropdownn>
             </div>
         </div>
@@ -16,14 +16,14 @@
         <!-- Linha 2: Horário -->
         <div class="row">
             <div class="col-sm-12 mb-3">
-                <div class="br-datetimepicker" data-mode="range" data-type="text">
+                <div class="br-datetimepicker" data-mode="single" data-type="datetime-local">
                     <div class="br-input has-icon"
                         [class.invalid]="scheduleForm.get('horario')?.invalid && scheduleForm.get('horario')?.touched">
-                        <label for="select-horario">Horário</label>
-                        <input id="select-horario" type="text" placeholder="Selecione o horário"
+                        <label for="dateandtime-input">Horário</label>
+                        <input id="dateandtime-input" type="datetime-local" placeholder="Selecione um horário"
                             formControlName="horario" data-input="data-input" />
                         <button class="br-button circle small" type="button" aria-label="Abrir Timepicker"
-                            data-toggle="data-toggle" id="select-horario-btn" tabindex="-1" aria-hidden="true">
+                            data-toggle="data-toggle" id="dateandtime-input-btn" tabindex="-1" aria-hidden="true">
                             <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                         </button>
                     </div>
