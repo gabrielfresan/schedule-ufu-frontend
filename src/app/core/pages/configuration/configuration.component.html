@@ -1,1 +1,41 @@
-<p>configuration works!</p>
+<div class="flex flex-col justify-around">
+    <h2 class="text-bold">Configurações</h2>
+    <div class="br-tab small">
+        <nav class="tab-nav">
+          <ul>
+            <li class="tab-item active" title="Geral">
+              <button type="button"><span class="name">Geral</span></button>
+            </li>
+            <li class="tab-item" title="Espaços Esportivos">
+              <button type="button"><span class="name">Espaços Esportivos</span></button>
+            </li>
+            <li class="tab-item" title="Permissões">
+              <button type="button"><span class="name">Permissões</span></button>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="Geral">
+            <h3>Agendamentos</h3>
+                <!-- Datapicker -->
+    <div class="flex justify-end gap-4">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <app-datapicker></app-datapicker>
+        </div>
+        <!-- Dropdown/Select -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <app-select-filter [dropdownOptions]="dropdownOptions" (selectedOption)="onOptionSelected($event)"></app-select-filter>
+        </div>
+      </div>
+      <!-- Tabela  -->
+      <app-table class="mb-5" [tableName]="'Gestão Reservas'" [tableData]="filteredReserva"></app-table>
+
+        </div>
+
+        <div class="Espaços Esportivos">
+
+        </div>
+
+        <div class="Permissões">
+        </div>
+</div>
