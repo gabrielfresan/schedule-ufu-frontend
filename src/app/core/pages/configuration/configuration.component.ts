@@ -19,7 +19,7 @@ export class ConfigurationComponent {
         nome: 'G2',
         resposavel: 'Gabriel Machado',
         curso: 'Sistemas de Informação',
-        disponibilidade: 'Editar',
+        disponibilidade: 'Cancelar',
         campus: 'Santa Mônica'
       },
       {
@@ -27,7 +27,7 @@ export class ConfigurationComponent {
         nome: 'G1 - Tenis de Mesa',
         resposavel: 'Gabriel Machado',
         curso: 'Sistemas de Informação',
-        disponibilidade: 'Editar',
+        disponibilidade: 'Cancelar',
         campus: 'FAEFI'
       }
     ];
