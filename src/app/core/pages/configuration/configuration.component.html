@@ -3,21 +3,24 @@
     <div class="br-tab small">
         <nav class="tab-nav">
           <ul>
-            <li class="tab-item active" title="Geral">
-              <button type="button"><span class="name">Geral</span></button>
+            <li class="tab-item" [class.active]="ShowGeral.valueOf()"  title="Geral">
+              <button type="button" (click)="onTabSelect('ShowGeral')"><span class="name">Geral</span></button>
             </li>
-            <li class="tab-item" title="Espaços Esportivos">
-              <button type="button"><span class="name">Espaços Esportivos</span></button>
+            <li class="tab-item" [class.active]="ShowEspaco.valueOf()"  title="Espaços Esportivos">
+              <button type="button" (click)="onTabSelect('ShowEspaco')" ><span class="name">Espaços Esportivos</span></button>
             </li>
-            <li class="tab-item" title="Permissões">
-              <button type="button"><span class="name">Permissões</span></button>
+            <li class="tab-item" [class.active]="ShowPermissao.valueOf()"  title="Permissões">
+              <button type="button" (click)="onTabSelect('ShowPermissao')" ><span class="name">Permissões</span></button>
             </li>
           </ul>
         </nav>
+    </div>
 
-        <div class="Geral">
+        <div *ngIf="ShowGeral.valueOf()" class="flex flex-col">
             <h3>Agendamentos</h3>
-                <!-- Datapicker -->
+            <app-slider></app-slider>
+            <app-slider></app-slider>
+      <!-- Datapicker -->
         <div class="flex justify-end gap-4">
             <div class="col-sm-6 col-md-4 col-lg-3">
               <app-datapicker></app-datapicker>
@@ -32,13 +35,11 @@
 
         </div>
 
-
-
-
-        <div class="Espaços Esportivos">
-
+        <div *ngIf="ShowEspaco.valueOf()" class="flex flex-col">
+          <h3>Espaços Esportivos</h3>
         </div>
 
-        <div class="Permissões">
+        <div *ngIf="ShowPermissao.valueOf()"  class="flex flex-col">
+          <h3>Permissões</h3>
         </div>
 </div>

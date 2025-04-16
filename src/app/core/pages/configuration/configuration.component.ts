@@ -1,18 +1,25 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, viewChild, viewChildren } from '@angular/core';
 import { Reserva } from '../../models/Reserva';
 import { TableComponent } from '../../components/table/table.component';
 import { DatapickerComponent } from '../../components/datapicker/datapicker.component';
 import { SelectFilterComponent } from '../../components/select-filter/select-filter.component';
 import { option } from '../../models/Option';
+import { Action } from 'rxjs/internal/scheduler/Action';
+import { SliderComponent } from "../../components/slider/slider.component";
 
 @Component({
   selector: 'app-configuration',
-  imports: [CommonModule, TableComponent, DatapickerComponent, SelectFilterComponent],
+  imports: [CommonModule, TableComponent, DatapickerComponent, SelectFilterComponent, SliderComponent],
   templateUrl: './configuration.component.html',
   styleUrl: './configuration.component.css'
 })
 export class ConfigurationComponent {
+  ShowGeral: boolean = true;
+  ShowEspaco: boolean = false;
+  ShowPermissao: boolean = false;
+
+
     reserva: Reserva[] = [
       {
         horario: '08:00 - 09:00',
@@ -58,6 +65,28 @@ export class ConfigurationComponent {
       } else {
         this.filteredReserva = this.reserva;
       }
+    }
+
+
+    onTabSelect(active: string): void {
+      switch (active) {
+        case 'ShowPermissao':
+          this.ShowGeral = false;
+          this.ShowEspaco = false;
+          this.ShowPermissao = true;
+          break;
+        case 'ShowEspaco':
+          this.ShowGeral = false;
+          this.ShowEspaco = true;
+          this.ShowPermissao = false;
+          break;
+        default:
+          this.ShowGeral = true;
+          this.ShowEspaco = false;
+          this.ShowPermissao = false;
+          break;
+      }
+        
     }
 
 }

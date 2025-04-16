@@ -15,7 +15,7 @@ export class SliderComponent {
   @Output() value: number = this.min;
 
   formatLabel(value: number): string {
-    if (value >= 1000) {
+    if (value >= this.step) {
       return Math.round(value / this.step).toString();
     }
     value
