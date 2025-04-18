@@ -1,9 +1,10 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {MatSliderModule} from '@angular/material/slider';
 
 @Component({
   selector: 'app-slider',
-  imports: [MatSliderModule],
+  imports: [MatSliderModule, FormsModule],
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.css'
 })
@@ -12,14 +13,15 @@ export class SliderComponent {
   @Input() max: number = 200;
   @Input() step: number = 10;
   @Input() title: string = "Titulo Slider";
-  @Output() value: number = this.min;
-
-  formatLabel(value: number): string {
-    if (value >= this.step) {
-      return Math.round(value / this.step).toString();
-    }
-    value
-    return `${value}`;
+  @Input() value: number = this.min;
+  @Output() valueChange: EventEmitter<number> = new EventEmitter<number>();
+  onSliderValueChange(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    const newValue = Number(target.value);
+    this.value = newValue; 
+    this.valueChange.emit(this.value);
   }
+
+
 
 }

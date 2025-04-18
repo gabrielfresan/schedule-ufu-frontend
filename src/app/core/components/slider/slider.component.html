@@ -1,6 +1,14 @@
-<div class="flex flex-col justify-around">
-    <h3>{{title}}</h3>
-    <mat-slider min="{min}" max="{max}" step="{step}" showTickMarks discrete [displayWith]="formatLabel">
-        <input matSliderThumb>
-      </mat-slider>
+<div class="flex flex-col justify-around m-2">
+    <div class="example-label-container">
+      <label id="example-name-label" class="example-name-label">{{title}}</label>
+      <label class="example-value-label ml-2 p-2 border 3px">{{slider.value}} minutos</label>
+    </div>
+    <mat-slider
+        class="example-margin"
+        [max]="max"
+        [min]="min" 
+        [step]="step"
+        (input)="onSliderValueChange($event)">
+      <input matSliderThumb [(ngModel)]="value" #slider>
+    </mat-slider>
 </div>
