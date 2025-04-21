@@ -20,8 +20,7 @@
                     <div class="br-input has-icon"
                         [class.invalid]="scheduleForm.get('horario')?.invalid && scheduleForm.get('horario')?.touched">
                         <label for="dateandtime-input">Horário</label>
-                        <input id="dateandtime-input" type="datetime-local" placeholder="Selecione um horário"
-                            formControlName="horario" />
+                        <input id="dateandtime-input" type="date" formControlName="horario" />
                     </div>
                     <div *ngIf="scheduleForm.get('horario')?.invalid && scheduleForm.get('horario')?.touched"
                         class="feedback danger">
