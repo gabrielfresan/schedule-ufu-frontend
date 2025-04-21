@@ -308,6 +308,7 @@
 button.close-button {
   background-color: transparent;
   border: none;
+  margin-right: 4px;
   color: var(--interactive);
   font-size: 1.5rem;
   font-weight: bold;
