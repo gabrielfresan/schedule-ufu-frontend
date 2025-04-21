@@ -46,3 +46,11 @@
 .time-label {
     margin-bottom: 8px;
 }
+
+.form-check-label {
+    margin-left: 4px;
+}
+
+.form-check-input {
+    margin: 0;
+}
