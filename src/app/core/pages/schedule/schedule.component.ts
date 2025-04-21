@@ -15,7 +15,7 @@ import { ScheduleTimeService } from '../../services/schedule-time.service';
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.css']
 })
-export class ScheduleComponent implements AfterViewInit {
+export class ScheduleComponent {
 
   isModalOpen: boolean = false;
 
@@ -129,16 +129,14 @@ export class ScheduleComponent implements AfterViewInit {
 
   filterTable(): void {
     if (this.selectedCampus) {
-      this.filteredReserva = this.reserva.filter(row => row.campus == this.selectedCampus);
+      this.filteredReserva = this.reserva.filter(row => row.campus === this.selectedCampus);
     } else {
       this.filteredReserva = this.reserva;
     }
   }
 
 
-  // Configurações iniciais do Flatpickr e filtro
-  @ViewChild(DatapickerComponent) datapickerComponent!: DatapickerComponent;
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     this.filteredReserva = this.reserva;
   }
 
