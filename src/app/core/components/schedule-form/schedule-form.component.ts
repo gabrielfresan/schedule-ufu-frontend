@@ -19,10 +19,7 @@ export class ScheduleFormComponent implements OnInit {
         this.scheduleForm = this.fb.group({
             campus: ['', Validators.required],
             ginasio: ['', Validators.required],
-            horario: [
-                '',
-                [Validators.required, Validators.pattern(/^\d{2}\/\d{2}\/\d{4} - \d{2}:\d{2} às \d{2}:\d{2}$/)],
-            ],
+            horario: ['', [Validators.required]],
             responsavel: ['', Validators.required],
             curso: ['', Validators.required],
             matricula: ['', Validators.required],

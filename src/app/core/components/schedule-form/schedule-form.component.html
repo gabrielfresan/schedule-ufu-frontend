@@ -21,15 +21,11 @@
                         [class.invalid]="scheduleForm.get('horario')?.invalid && scheduleForm.get('horario')?.touched">
                         <label for="dateandtime-input">Horário</label>
                         <input id="dateandtime-input" type="datetime-local" placeholder="Selecione um horário"
-                            formControlName="horario" data-input="data-input" />
-                        <button class="br-button circle small" type="button" aria-label="Abrir Timepicker"
-                            data-toggle="data-toggle" id="dateandtime-input-btn" tabindex="-1" aria-hidden="true">
-                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                        </button>
+                            formControlName="horario" />
                     </div>
                     <div *ngIf="scheduleForm.get('horario')?.invalid && scheduleForm.get('horario')?.touched"
                         class="feedback danger">
-                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Selecione um horário válido.
+                        {{ getErrorMessage('horario') }}
                     </div>
                 </div>
                 <div class="mt-2">
@@ -66,12 +62,21 @@
                     <input id="curso" type="text" formControlName="curso"
                         placeholder="Preenchido automaticamente ao selecionar o responsável" />
                 </div>
+                <div *ngIf="scheduleForm.get('curso')?.invalid && scheduleForm.get('curso')?.touched"
+                    class="feedback danger">
+                    {{ getErrorMessage('curso') }}
+                </div>
             </div>
             <div class="col-sm-6 mb-3">
                 <div class="br-input">
                     <label for="matricula">Matrícula</label>
                     <input id="matricula" type="text" formControlName="matricula"
-                        placeholder="Preenchido automaticamente ao selecionar o responsável" />
+                        placeholder="Preenchido automaticamente ao selecionar o responsável"
+                        [class.invalid]="scheduleForm.get('matricula')?.invalid && scheduleForm.get('matricula')?.touched" />
+                </div>
+                <div *ngIf="scheduleForm.get('matricula')?.invalid && scheduleForm.get('matricula')?.touched"
+                    class="feedback danger">
+                    {{ getErrorMessage('matricula') }}
                 </div>
             </div>
         </div>
@@ -79,10 +84,14 @@
         <!-- Linha 5: Telefone -->
         <div class="row">
             <div class="col-sm-12 mb-3">
-                <div class="br-input">
+                <div class="br-input"
+                    [class.invalid]="scheduleForm.get('telefone')?.invalid && scheduleForm.get('telefone')?.touched">
                     <label for="telefone">Telefone</label>
-                    <input id="telefone" type="text" formControlName="telefone"
-                        placeholder="Preenchido automaticamente ao selecionar o responsável" />
+                    <input id="telefone" type="text" formControlName="telefone" placeholder="Digite o telefone" />
+                    <div *ngIf="scheduleForm.get('telefone')?.invalid && scheduleForm.get('telefone')?.touched"
+                        class="feedback danger">
+                        {{ getErrorMessage('telefone') }}
+                    </div>
                 </div>
             </div>
         </div>
