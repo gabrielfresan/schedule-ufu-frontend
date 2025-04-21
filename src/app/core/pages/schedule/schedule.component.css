@@ -304,3 +304,22 @@
 .br-datetimepicker input[disabled] {
   cursor: not-allowed;
 }
+
+button.close-button {
+  background-color: transparent;
+  border: none;
+  color: var(--interactive);
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+button.close-button:hover {
+  color: var(--hover-effect);
+}
+
+button.close-button:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
