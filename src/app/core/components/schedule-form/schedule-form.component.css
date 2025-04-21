@@ -38,3 +38,11 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.br-label {
+    margin-bottom: 8px;
+}
+
+.time-label {
+    margin-bottom: 8px;
+}

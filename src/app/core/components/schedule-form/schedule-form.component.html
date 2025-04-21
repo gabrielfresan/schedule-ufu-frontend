@@ -28,9 +28,49 @@
                         {{ getErrorMessage('horario') }}
                     </div>
                 </div>
-                <div class="mt-2">
-                    <input type="checkbox" id="horarioRepetido" />
-                    <label for="horarioRepetido">Horário Semanal Recorrente</label>
+                <div class="form-check mt-2">
+                    <input type="checkbox" id="horarioRepetido" class="form-check-input"
+                        (click)="onHorarioRecorrente()" />
+                    <label for="horarioRepetido" class="form-check-label">Horário Semanal Recorrente</label>
+                </div>
+
+                <!-- Campos adicionais para recorrência -->
+                <div *ngIf="!horarioRecorrente" class="mt-3">
+                    <span class="time-label" style="font-weight: bold;">Termina em</span>
+                    <div class="row" style="margin-top: 14px;">
+                        <div class="col-sm-12 mb-2">
+                            <div class="br-radio">
+                                <input type="radio" id="terminaNunca" name="terminaEm" value="nunca"
+                                    formControlName="terminaEm" class="br-radio-input" />
+                                <label for="terminaNunca" class="br-radio-label">Nunca</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 mb-2">
+                            <div class="br-radio">
+                                <input type="radio" id="terminaEm" name="terminaEm" value="data"
+                                    formControlName="terminaEm" class="br-radio-input" />
+                                <label for="terminaEm" class="br-radio-label">Em</label>
+                                <div class="br-input has-icon">
+                                    <input id="dateandtime-input" type="date" placeholder="Selecione um horário"
+                                        formControlName="dataTermino" class="br-input" />
+                                    <button class="br-button circle small" type="button" aria-label="Abrir calendário">
+                                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 mb-2">
+                            <div class="br-radio">
+                                <input type="radio" id="terminaApos" name="terminaEm" value="ocorrencias"
+                                    formControlName="terminaEm" class="br-radio-input" />
+                                <label for="terminaApos" class="br-radio-label">Após</label>
+                                <div class="br-input">
+                                    <input type="number" class="br-input" formControlName="ocorrencias"
+                                        placeholder="10 ocorrências" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

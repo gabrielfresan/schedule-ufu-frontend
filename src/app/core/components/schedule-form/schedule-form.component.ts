@@ -12,6 +12,7 @@ import { option } from '../../models/Option';
 })
 export class ScheduleFormComponent implements OnInit {
     scheduleForm!: FormGroup;
+    horarioRecorrente: boolean = false;
 
     constructor(private fb: FormBuilder) { }
 
@@ -20,6 +21,9 @@ export class ScheduleFormComponent implements OnInit {
             campus: ['', Validators.required],
             ginasio: ['', Validators.required],
             horario: ['', [Validators.required]],
+            terminaEm: [''],
+            dataTermino: [''],
+            ocorrencias: [''],
             responsavel: ['', Validators.required],
             curso: ['', Validators.required],
             matricula: ['', Validators.required],
@@ -69,6 +73,10 @@ export class ScheduleFormComponent implements OnInit {
 
     onGinasioSelected(selected: option): void {
         this.scheduleForm.get('ginasio')?.setValue(selected.value);
+    }
+
+    onHorarioRecorrente() {
+        this.horarioRecorrente = !this.horarioRecorrente;
     }
 
     //dropdown options

@@ -317,7 +317,7 @@ button.close-button {
 }
 
 button.close-button:hover {
-  color: var(--hover-effect);
+  color: red;
 }
 
 button.close-button:focus {
