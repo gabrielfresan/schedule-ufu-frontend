@@ -1,15 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { DropdownnComponent } from "../dropdownn/dropdownn.component";
+import { option } from '../../models/Option';
 
 @Component({
     selector: 'app-schedule-form',
     templateUrl: './schedule-form.component.html',
     styleUrls: ['./schedule-form.component.css'],
-    imports: [CommonModule, ReactiveFormsModule]
+    imports: [CommonModule, ReactiveFormsModule, DropdownnComponent]
 })
 export class ScheduleFormComponent implements OnInit {
     scheduleForm!: FormGroup;
+    horarioRecorrente: boolean = false;
 
     constructor(private fb: FormBuilder) { }
 
@@ -17,10 +20,10 @@ export class ScheduleFormComponent implements OnInit {
         this.scheduleForm = this.fb.group({
             campus: ['', Validators.required],
             ginasio: ['', Validators.required],
-            horario: [
-                '',
-                [Validators.required, Validators.pattern(/^\d{2}\/\d{2}\/\d{4} - \d{2}:\d{2} às \d{2}:\d{2}$/)],
-            ],
+            horario: ['', [Validators.required]],
+            terminaEm: [''],
+            dataTermino: [''],
+            ocorrencias: [''],
             responsavel: ['', Validators.required],
             curso: ['', Validators.required],
             matricula: ['', Validators.required],
@@ -63,4 +66,27 @@ export class ScheduleFormComponent implements OnInit {
         }
         return '';
     }
+
+    onCampusSelected(selected: option): void {
+        this.scheduleForm.get('campus')?.setValue(selected.value);
+    }
+
+    onGinasioSelected(selected: option): void {
+        this.scheduleForm.get('ginasio')?.setValue(selected.value);
+    }
+
+    onHorarioRecorrente() {
+        this.horarioRecorrente = !this.horarioRecorrente;
+    }
+
+    //dropdown options
+    CampusOptions: Array<option> = [
+        { id: 'santa-monica', value: 'Santa Mônica', label: 'Santa Mônica' },
+        { id: 'faefi', value: 'FAEFI', label: 'FAEFI' },
+    ];
+
+    GinasioOptions: Array<option> = [
+        { id: 'g1', value: 'G1', label: 'G1' },
+        { id: 'g2', value: 'G2', label: 'G2' },
+    ];
 }

@@ -18,6 +18,8 @@ export class TableComponent {
   onDisponivelClick(row: Reserva): void {
     if (row.disponibilidade === 'Disponível') {
       this.scheduleService.abrirModalScheduleForm();
+    }else if (row.disponibilidade === 'Editar') {
+      this.scheduleService.abrirModalScheduleForm();
     }
   }
 }

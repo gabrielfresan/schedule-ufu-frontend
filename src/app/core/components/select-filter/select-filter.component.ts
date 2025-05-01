@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './select-filter.component.css'
 })
 export class SelectFilterComponent {
+    @Input()  placeholder: string = 'Selecione o Campus para filtrar';
     @Input() dropdownOptions: Array<option> = [];
     @Output() selectedOption = new EventEmitter<option>();
   
@@ -17,7 +18,7 @@ export class SelectFilterComponent {
       isDropdownOpen: boolean = false;
       // Variáveis para o filtro e lista a ser mostrada
       selectedCampus: string = '';
-      selectedLabel: string = "Selecione o Campus para filtrar";
+      selectedLabel: string = this.placeholder;
     
   
     //lógica do dropdown
