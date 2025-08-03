@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, ViewChild, Renderer2 } from '@angular/core';
+import { Component } from '@angular/core';
 import { Reserva } from '../../models/Reserva';
 import { CommonModule } from '@angular/common';
 import { TableComponent } from "../../components/table/table.component";
@@ -19,10 +19,7 @@ export class ScheduleComponent {
 
   isModalOpen: boolean = false;
 
-  @ViewChild('modalForm', { static: false }) modalForm!: ElementRef;
-  @ViewChild('modalOverlay', { static: false }) modalOverlay!: ElementRef;
-
-  constructor(private renderer: Renderer2, private scheduleTimeService: ScheduleTimeService) {
+  constructor(private scheduleTimeService: ScheduleTimeService) {
     this.scheduleTimeService.horarioDisponivelClicadoEmitter.subscribe(() => {
       this.abrirModalScheduleForm();
     });
@@ -156,26 +153,10 @@ export class ScheduleComponent {
 
   abrirModalScheduleForm(): void {
     this.isModalOpen = true;
-
-    if (this.modalForm?.nativeElement) {
-      this.renderer.setStyle(this.modalForm.nativeElement, 'display', 'block');
-    }
-
-    if (this.modalOverlay?.nativeElement) {
-      this.renderer.setStyle(this.modalOverlay.nativeElement, 'display', 'block');
-    }
   }
 
   fecharModalScheduleForm(): void {
     this.isModalOpen = false;
-
-    if (this.modalForm?.nativeElement) {
-      this.renderer.setStyle(this.modalForm.nativeElement, 'display', 'none');
-    }
-
-    if (this.modalOverlay?.nativeElement) {
-      this.renderer.setStyle(this.modalOverlay.nativeElement, 'display', 'none');
-    }
   }
 
 }
