@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DropdownnComponent } from "../dropdownn/dropdownn.component";
 import { option } from '../../models/Option';
+import { ApiService } from '../../services/api.service';
 
 @Component({
     selector: 'app-schedule-form',
@@ -14,7 +15,7 @@ export class ScheduleFormComponent implements OnInit {
     scheduleForm!: FormGroup;
     horarioRecorrente: boolean = false;
 
-    constructor(private fb: FormBuilder) { }
+    constructor(private fb: FormBuilder, private apiService: ApiService) { }
 
     ngOnInit(): void {
         this.scheduleForm = this.fb.group({
@@ -42,9 +43,24 @@ export class ScheduleFormComponent implements OnInit {
     }
 
     onSubmit(): void {
-        // TODO: Implementar lógica de envio do formulário
         if (this.scheduleForm.valid) {
             console.log('Formulário enviado com sucesso!', this.scheduleForm.value);
+            
+            // Enviar dados para o backend
+            this.apiService.createSchedule(this.scheduleForm.value).subscribe({
+                next: (response) => {
+                    console.log('Agendamento criado com sucesso:', response);
+                    alert('Agendamento criado com sucesso!');
+                    this.scheduleForm.reset();
+                },
+                error: (error) => {
+                    console.error('Erro ao criar agendamento:', error);
+                    alert('Erro ao criar agendamento. Verifique o console para mais detalhes.');
+                }
+            });
+        } else {
+            console.log('Formulário inválido');
+            alert('Por favor, preencha todos os campos obrigatórios.');
         }
     }
 
