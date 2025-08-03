@@ -25,9 +25,9 @@ export class DropdownnComponent {
           //lógica do dropdown
           toggleDropdown(): void {
             this.isDropdownOpen = !this.isDropdownOpen;
-            if (this.isDropdownOpen) {
+            if (this.isDropdownOpen && this.dropdownList?.nativeElement) {
               this.dropdownList.nativeElement.style.display = 'absolute';
-            } else {
+            } else if (this.dropdownList?.nativeElement) {
               this.dropdownList.nativeElement.style.display = 'none';
             }
           }
